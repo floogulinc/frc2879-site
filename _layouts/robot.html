@@ -10,7 +10,7 @@ layout: base
 <div class="collection">
   {% assign sorted_robots = site.robots | sort:"year" %}
   {% for item in sorted_robots %}
-  <a class="collection-item{% if page.url == item.url %} active{% endif %}" href="{{ item.baseurl }}{{ item.url }}">{{ item.title }}</a>
+  <a class="collection-item{% if page.url == item.url %} active{% endif %}" href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
   {% endfor %}
   </ul>
 </div>
