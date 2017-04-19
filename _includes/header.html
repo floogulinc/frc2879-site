@@ -1,0 +1,27 @@
+{% capture nav_list %}
+{% assign sorted_pages = site.pages | where_exp:"item", "item.order" | sort:"order" %}
+{% for node in sorted_pages %}
+{% unless node.url contains '/blog/page' %}
+<li{% if (page.url == node.url) or (page.url contains node.match_url_contains) or (page.collection != null and page.collection == node.match_collection) %} class="active"{% endif %}><a href="{{ site.baseurl }}{{node.url}}">{{node.title}}</a></li>
+{% endunless %}
+{% endfor %}
+{% endcapture %}
+
+<header>
+<div class="navbar-fixed">
+<nav role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">
+    <img src="{{ site.baseurl }}/images/logo/frc2879-logo.svg" alt="{{ site.title }}">
+    </a>
+      <ul class="right hide-on-med-and-down">
+        {{ nav_list }}
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi mdi-menu"></i></a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  {{ nav_list }}
+</ul>
+</header>

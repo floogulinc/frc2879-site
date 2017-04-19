@@ -1,0 +1,48 @@
+---
+title: Blog
+order: 5
+match_collection: posts
+match_url_contains: "/blog/page"
+---
+
+<h1>{{ page.title }}</h1>
+<div class="row">
+{% for post in paginator.posts %}
+    <div class="col s12 m6">
+      <div class="card small hoverable">
+        <div class="card-content">
+        <span class="card-title"><a href="{{ post.url }}">{{ post.title }}</a></span>
+        <p>{{ post.date | date_to_long_string }}</p>
+          <p>{{ post.content }}</p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+    </div>
+
+
+{% if paginator.total_pages > 1 %}
+<ul class="pagination center-align">
+  {% if paginator.previous_page %}
+    <li><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i class="mdi mdi-chevron-left"></i></a></li>
+  {% else %}
+    <li class="disabled"><a href="#!"><i class="mdi mdi-chevron-left"></i></a></li>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <li class="active"><a href="#!">{{ page }}</a></li>
+    {% elsif page == 1 %}
+      <li><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a></li>
+    {% else %}
+      <li><a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <li><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i class="mdi mdi-chevron-right"></i></a></li>
+  {% else %}
+    <li class="disabled"><a href="#!"><i class="mdi mdi-chevron-right"></i></a></li>
+  {% endif %}
+</ul>
+{% endif %}

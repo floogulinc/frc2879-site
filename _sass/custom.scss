@@ -1,0 +1,24 @@
+.nav-wrapper .brand-logo {
+      height: 100%;
+}
+.nav-wrapper .brand-logo img {
+      width: auto;
+      height: 100%;
+      padding: 4px;
+}
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+
+.right-block {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}

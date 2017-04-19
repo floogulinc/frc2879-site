@@ -1,0 +1,37 @@
+---
+layout: 
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body>
+    {% include header.html %}
+<main>
+    {{ content }}
+ </main>
+    {% include footer.html %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js" integrity="sha256-ToPQhpo/E89yaCd7+V8LUCjobNRkjilRXfho6x3twLU=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".button-collapse").sideNav();
+ });
+</script>
+{% if page.page-js %}
+<script type="text/javascript">
+{{ page.page-js }}
+</script>
+{% endif %}
+{% if layout.layout-js %}
+<script type="text/javascript">
+{{ layout.layout-js }}
+</script>
+{% endif %}
+<!--<script async src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.0/turbolinks.min.js" integrity="sha256-HUtkNsGc3BlCNQTNPUr5JsjW0wQFeU4nfYOEuUcxptU=" crossorigin="anonymous"></script>-->
+<!--<script async src="https://cdnjs.cloudflare.com/ajax/libs/page-accelerator/0.1.1/page-accelerator.min.js" onload="pageAccelerator();"></script>-->
+</body>
+</html>
